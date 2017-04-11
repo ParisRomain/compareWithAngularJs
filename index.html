@@ -39,28 +39,30 @@
             </div>
           </form>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Bons Plans</a></li>
+
           </ul>
           </div>
         </div>
       </nav>
     </header>
-    <main>
-      <div class="container" style="padding-top:3em;" ng-controller="PhonesCtrl" ng-init="query">
-        <div class="card hovercard col-sm-4" ng-repeat="phone in phones |  filter : query| orderBy: order">
-          <img ng-src="{{phone.image}}" class="img-responsive"/>
-           <div class="info">
-              <div class="title">
-                 <strong>{{phone.modele}}</strong>
+    <main class="container">
+        <div class="row" ng-controller="PhonesCtrl" ng-init="query" style="padding-top:3em;">
+          <div class="col-sm-6 col-md-4"  ng-repeat="phone in phones | filter : query| orderBy: order">
+            <div class="cards thumbnail">
+              <img ng-src="{{phone.image}}">
+              <div class="caption">
+                <h3>{{phone.modele}}</h3>
+                <div class="row">
+                  <p class="col-sm-6">by <a href="#">{{phone.marque}}</a></p>
+                  <p  class="text-right col-sm-6">start at {{phone.prix}}</p>
+                </div>
+                <div class="btn center-block">
+                  <button class="btn btn-custom btn-large btn-block">see more</button>
+                </div>
               </div>
-              <div class="desc">by {{phone.marque}}</div>
-              <div class="desc">start at {{phone.prix}}</div>
-           </div>
-           <div class="bottom">
-              <button class="btn btn-default">Open</button>
-           </div>
+            </div>
+          </div>
         </div>
-
 
         <!-- <div ng-controller="PhonesCtrl" ng-init="query">
            <div ng-repeat="phone in phones |  filter : query| orderBy: order">
@@ -70,8 +72,6 @@
               </p>
           </div>
         </div> -->
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
 
     <script type="text/javascript">
          function PhonesCtrl($scope) {
