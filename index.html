@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJS</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/cards.css">
+  </head>
+  <!--  -->
+  <body ng-app>
+    <header>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">AngularJS</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-nav inline-form">
+            <div class="form-group">
+              <input type="text" class="input-sm form-control" placeholder="Recherche" ng-model="query" style="height:33px">
+              <select ng-model="order" class="selectpicker" data-width="168px">
+                  <option value="" disabled >Organiser par ...</option>
+                  <option value="marque">marque</option>
+                  <option value="prix">prix</option>
+              </select>
+            </div>
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Bons Plans</a></li>
+          </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container" style="padding-top:3em;" ng-controller="PhonesCtrl" ng-init="query">
+        <div class="card hovercard col-sm-4" ng-repeat="phone in phones |  filter : query| orderBy: order">
+          <img ng-src="{{phone.image}}" class="img-responsive"/>
+           <div class="info">
+              <div class="title">
+                 <strong>{{phone.modele}}</strong>
+              </div>
+              <div class="desc">by {{phone.marque}}</div>
+              <div class="desc">start at {{phone.prix}}</div>
+           </div>
+           <div class="bottom">
+              <button class="btn btn-default">Open</button>
+           </div>
+        </div>
+
+
+        <!-- <div ng-controller="PhonesCtrl" ng-init="query">
+           <div ng-repeat="phone in phones |  filter : query| orderBy: order">
+              <p>
+                   <strong>{{phone.marque}}</strong><br>
+                   {{phone.modele}} {{phone.prix}}
+              </p>
+          </div>
+        </div> -->
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+
+    <script type="text/javascript">
+         function PhonesCtrl($scope) {
+             console.log($scope);
+             $scope.phones = [{
+
+                  "marque": "Samsung",
+                   "modele": "Galaxy S8",
+                   "prix": "800€",
+                   "image":"assets/img/s8.jpg"
+               },
+               {
+                   "marque": "lg",
+                   "modele": "G6",
+                   "prix": "750€",
+                   "image":"assets/img/g6.jpg"
+               },
+               {
+                   "marque": "Huawei",
+                   "modele": "p10",
+                   "prix": "600€",
+                   "image":"assets/img/p10.jpg"
+               },
+               {
+                   "marque": "Apple",
+                   "modele": "Iphone 7",
+                   "prix": "769€",
+                   "image":"assets/img/iphone7.jpg"
+               },
+               {
+                   "marque": "Apple",
+                   "modele": "Iphone 7 Plus",
+                   "prix": "910€",
+                   "image":"assets/img/iphone7plus.jpg"
+               },
+               {
+                   "marque": "Samsung",
+                   "modele": "Galaxy S8+",
+                   "prix": "900€",
+                   "image":"assets/img/s8plus.jpg"
+               }]
+         }
+     </script>
+      </div>
+    </main>
+
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+      <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/i18n/defaults-*.min.js"></script>
+
+  </body>
+</html>
