@@ -57,7 +57,22 @@
                   <p  class="text-right col-sm-6">start at {{phone.prix}}</p>
                 </div>
                 <div class="btn center-block">
-                  <button class="btn btn-custom btn-large btn-block">see more</button>
+                  <button class="btn btn-custom btn-large btn-block" data-toggle="modal" data-target="#myModal">see more</button>
+
+                  <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">{{phone.modele}}</h4>
+                          </div>
+                          <div class="modal-body">
+                            <img ng-src="{{phone.image}}" class="img-responsive center-block">
+                          </div>
+                        </div><!-- /.modal-content -->
+                      </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
                 </div>
               </div>
             </div>
